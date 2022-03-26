@@ -22,6 +22,10 @@ function parseRouteParams(name) {
     const routeParamMatch = section.match(/([A-Z][A-Za-z0-9]*)(_?_?)$/);
     const maybeParam = (routeParamMatch && routeParamMatch[1]) || "TODO";
     const isSplat = maybeParam === "SPLAT";
+    
+    if (routeParamMatch.length < 2) {
+      throw "Unhandled";
+    }
 
     // return maybeParam && toFieldName(maybeParam);
     if (routeParamMatch[2] === "") {
